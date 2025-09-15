@@ -565,7 +565,7 @@ screen about():
             if gui.about:
                 text "[gui.about!t]\n"
 
-            text _("Игра про Перескокова, пидораса конченного")
+            text _("Игра про Перескокова, моего друга")
 
 
 style about_label is gui_label
