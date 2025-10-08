@@ -2,8 +2,7 @@
 
 # Определение персонажей игры.
 define e = Character('Эйлин', color="#c8ffc8")
-define chel = Character('Перескоков', color="#FFC0CB")
-
+define chel = Character('Лёха', color="#013220")
 # Вместо использования оператора image можете просто
 # складывать все ваши файлы изображений в папку images.
 # Например, сцену bg room можно вызвать файлом "bg room.png",
@@ -12,16 +11,22 @@ define chel = Character('Перескоков', color="#FFC0CB")
 # Игра начинается здесь:
 label start:
 
-    scene bg room
+    scene orig
 
-    show eileen happy
 
-    e "Вы создали новую игру Ren'Py."
+    play music "audio/goMusic.mp3" loop
 
-    e "Добавьте сюжет, изображения и музыку и отправьте её в мир!"
+    "Лёха решил пешком дойти до школы"
+    show loh
+    chel "я уже у порога школы"
+    hide loh
 
-    chel "Я сосу хуй"
+    "Прошёл урок математики и началась перемена"
 
-    chel "Долблюсь"
+    scene coridor 
 
+    show loh happy
+    chel "у меня в кармане есть 20 рублей, куплю себе булочку с сахаром"
+    hide loh happy
+   
     return
