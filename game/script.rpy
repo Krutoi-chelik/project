@@ -80,7 +80,7 @@ label start_game:
         $ sum = num1 + num2
 
         $ answer = renpy.call_screen("variant", num1=num1, num2=num2)
-        i += 1
+        $ i += 1
         $ res = int(answer)
         if answer == '0':
             hide smile
@@ -102,5 +102,17 @@ label after_math:
 
 
     chel "Так, математика закончилась"
+
+    $ british_mark = 0
+    menu question_1:
+        "В советской историографии первым парламентом принято считать парламент, созванный графом Монфором. А в каком году?"
+        "1264 год":
+            pass
+        "1265 год":
+            $ british_mark +=1
+        "1266 год":
+            pass
+        "1267 год":
+            pass
 
 
