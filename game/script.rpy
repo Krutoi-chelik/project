@@ -5,6 +5,7 @@ define e = Character('Эйлин', color="#c8ffc8")
 define chel = Character('Лёха', color="#7fff00")
 define hp = 100
 define score = 0
+define correct_answers=0
 
 init python:
     import random
@@ -21,11 +22,24 @@ screen hp_counter():
             color "#00ffff"
             bold True
             outlines [ (3, "#000000", 0, 0) ]
+            # Добавляем экран счетчика правильных ответов
+screen math_counter():
+    vbox:
+        xalign 0.02
+        yalign 0.15  # Размещаем ниже счетчика энергии
+        spacing 5
+            
+        text "Правильные ответы: [correct_answers]":
+            size 28
+            color "#00ff00"
+            bold True
+            outlines [ (2, "#000000", 0, 0) ]
 
 label start:
 
     scene orig
     show screen hp_counter
+    show screen math_counter
 
     play music "audio/goMusic.mp3" loop
 
@@ -33,20 +47,22 @@ label start:
     show poker
     chel "я уже у порога школы"
     hide poker
+    scene coridor
 
     show smile
     chel "Хорошо погоняли на физкультуре в футбол"
     $ hp -= 10
     chel "Правда, немного устал"
-    scene coridor 
 
     hide smile
     show poker
     chel "Что ж, сейчас будет пятиминутка по математике"
-    chel "Со свнининой михайловной"
     hide poker
 
+    stop music
+    play music "audio/math.mp3" loop
     show angry
+    
 
     jump start_game
     return
@@ -90,11 +106,14 @@ label start_game:
             hide angry
             show smile
             chel "Ура, правильный ответ"
+            $ correct_answers +=1
         else:
             hide smile
             show angry
-            chel "Бля, ошибся"
+            chel "Ошибся"
+            
     jump after_math
+    
 
 
 # здесь идет после математики
